@@ -86,7 +86,7 @@ namespace SalesWebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id, Numeroocorrencia, Statusocorrencia")] Ocorrencia ocorrencia)
+        public async Task<IActionResult> Edit(int id, [Bind("Id, NumeroOcorrencia, StatusOcorrencia")] Ocorrencia ocorrencia)
         {
             if (id != ocorrencia.Id)
             {
