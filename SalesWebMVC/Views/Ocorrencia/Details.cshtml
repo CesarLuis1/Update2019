@@ -1,0 +1,31 @@
+﻿@model SalesWebMVC.Models.Ocorrencia
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Cadastro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroOcorrencia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumeroOcorrencia)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusOcorrencia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StatusOcorrencia)
+        </dd>
+ 
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="Index">Voltar</a>
+</div>

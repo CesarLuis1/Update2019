@@ -10,11 +10,11 @@ using SalesWebMVC.Models;
 
 namespace SalesWebMVC.Controllers
 {
-    public class DepartmentsController : Controller
+    public class NovaTransController : Controller
     {
         private readonly SalesWebMVCContext _context;
 
-        public DepartmentsController(SalesWebMVCContext context)
+        public NovaTransController(SalesWebMVCContext context)
         {
             _context = context;
         }
@@ -22,7 +22,7 @@ namespace SalesWebMVC.Controllers
         // GET: Departments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Department.ToListAsync());
+            return View(await _context.Transacao.ToListAsync());
         }
 
         // GET: Departments/Details/5
@@ -33,14 +33,14 @@ namespace SalesWebMVC.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Department
+            var novaTrans = await _context.Transacao
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (department == null)
+            if (novaTrans == null)
             {
                 return NotFound();
             }
 
-            return View(department);
+            return View(novaTrans);
         }
 
         // GET: Departments/Create
@@ -54,15 +54,15 @@ namespace SalesWebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name, IDTransacao, DataCadastro")] Department department)
+        public async Task<IActionResult> Create([Bind("Id,Name, NumTransacao")] NovaTrans novaTrans)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(department);
+                _context.Add(novaTrans);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(department);
+            return View(novaTrans);
         }
 
         // GET: Departments/Edit/5
@@ -73,12 +73,12 @@ namespace SalesWebMVC.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Department.FindAsync(id);
-            if (department == null)
+            var novaTrans = await _context.Transacao.FindAsync(id);
+            if (novaTrans == null)
             {
                 return NotFound();
             }
-            return View(department);
+            return View(novaTrans);
         }
 
         // POST: Departments/Edit/5
@@ -86,9 +86,9 @@ namespace SalesWebMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name, IDTransacao, DataCadastro")] Department department)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name, NumTransacao")] NovaTrans novaTrans)
         {
-            if (id != department.Id)
+            if (id != novaTrans.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace SalesWebMVC.Controllers
             {
                 try
                 {
-                    _context.Update(department);
+                    _context.Update(novaTrans);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DepartmentExists(department.Id))
+                    if (!novaTransExists(novaTrans.Id))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace SalesWebMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(department);
+            return View(novaTrans);
         }
 
         // GET: Departments/Delete/5
@@ -124,14 +124,14 @@ namespace SalesWebMVC.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Department
+            var novaTrans = await _context.Transacao
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (department == null)
+            if (novaTrans == null)
             {
                 return NotFound();
             }
 
-            return View(department);
+            return View(novaTrans);
         }
 
         // POST: Departments/Delete/5
@@ -139,15 +139,15 @@ namespace SalesWebMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var department = await _context.Department.FindAsync(id);
-            _context.Department.Remove(department);
+            var novaTrans = await _context.Transacao.FindAsync(id);
+            _context.Transacao.Remove(novaTrans);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DepartmentExists(int id)
+        private bool novaTransExists(int id)
         {
-            return _context.Department.Any(e => e.Id == id);
+            return _context.Transacao.Any(e => e.Id == id);
         }
     }
 }

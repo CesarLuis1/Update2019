@@ -1,10 +1,10 @@
-﻿@model IEnumerable<SalesWebMVC.Models.Department>
+﻿@model IEnumerable<SalesWebMVC.Models.NovaTrans>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Controle</h2>
+<h2>Transação</h2>
 
 <p>
     <a asp-action="Create">Inserir cadastro</a>
@@ -16,11 +16,9 @@
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IDTransacao)
+                @Html.DisplayNameFor(model => model.NumTransacao)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCadastro)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -31,10 +29,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IDTransacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCadastro)
+                @Html.DisplayFor(modelItem => item.NumTransacao)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

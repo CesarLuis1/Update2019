@@ -1,4 +1,4 @@
-﻿@model SalesWebMVC.Models.Department
+﻿@model SalesWebMVC.Models.NovaTrans
 
 @{
     ViewData["Title"] = "Editar Cadastro";
@@ -19,15 +19,11 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IDTransacao" class="control-label"></label>
-                <input asp-for="IDTransacao" class="form-control" />
-                <span asp-validation-for="IDTransacao" class="text-danger"></span>
+                <label asp-for="NumTransacao" class="control-label"></label>
+                <input asp-for="NumTransacao" class="form-control" />
+                <span asp-validation-for="NumTransacao" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DataCadastro" class="control-label"></label>
-                <input asp-for="DataCadastro" class="form-control" />
-                <span asp-validation-for="DataCadastro" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>

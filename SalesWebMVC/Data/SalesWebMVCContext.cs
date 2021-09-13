@@ -15,5 +15,9 @@ namespace SalesWebMVC.Data
         }
 
         public DbSet<SalesWebMVC.Models.Department> Department { get; set; }
+
+        public DbSet<SalesWebMVC.Models.NovaTrans> Transacao { get; set; }
+
+        public DbSet<SalesWebMVC.Models.Ocorrencia> Ocorrencia { get; set; }
     }
 }

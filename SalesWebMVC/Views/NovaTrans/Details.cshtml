@@ -1,4 +1,4 @@
-﻿@model SalesWebMVC.Models.Department
+﻿@model SalesWebMVC.Models.NovaTrans
 
 @{
     ViewData["Title"] = "Details";
@@ -17,16 +17,10 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.IDTransacao)
+            @Html.DisplayNameFor(model => model.NumTransacao)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.IDTransacao)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.DataCadastro)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.DataCadastro)
+            @Html.DisplayFor(model => model.NumTransacao)
         </dd>
     </dl>
 </div>

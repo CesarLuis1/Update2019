@@ -1,10 +1,10 @@
-﻿@model IEnumerable<SalesWebMVC.Models.Department>
+﻿@model IEnumerable<SalesWebMVC.Models.Ocorrencia>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h2>Controle</h2>
+<h2>Ocorrência</h2>
 
 <p>
     <a asp-action="Create">Inserir cadastro</a>
@@ -13,14 +13,12 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.NumeroOcorrencia)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IDTransacao)
+                @Html.DisplayNameFor(model => model.StatusOcorrencia)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCadastro)
-            </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -28,14 +26,12 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.NumeroOcorrencia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IDTransacao)
+                @Html.DisplayFor(modelItem => item.StatusOcorrencia)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCadastro)
-            </td>
+            
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

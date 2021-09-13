@@ -10,22 +10,22 @@ using SalesWebMVC.Models;
 
 namespace SalesWebMVC.Controllers
 {
-    public class DepartmentsController : Controller
+    public class OcorrenciaController : Controller
     {
         private readonly SalesWebMVCContext _context;
 
-        public DepartmentsController(SalesWebMVCContext context)
+        public OcorrenciaController(SalesWebMVCContext context)
         {
             _context = context;
         }
 
-        // GET: Departments
+        // GET: Ocorrencia
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Department.ToListAsync());
+            return View(await _context.Ocorrencia.ToListAsync());
         }
 
-        // GET: Departments/Details/5
+        // GET: Ocorrencia/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace SalesWebMVC.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Department
+            var ocorrencia = await _context.Ocorrencia
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (department == null)
+            if (ocorrencia == null)
             {
                 return NotFound();
             }
 
-            return View(department);
+            return View(ocorrencia);
         }
 
-        // GET: Departments/Create
+        // GET: Ocorrencia/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Departments/Create
+        // POST: Ocorrencia/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name, IDTransacao, DataCadastro")] Department department)
+        public async Task<IActionResult> Create([Bind("Id, NumeroOcorrencia, StatusOcorrencia")] Ocorrencia ocorrencia)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(department);
+                _context.Add(ocorrencia);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(department);
+            return View(ocorrencia);
         }
 
-        // GET: Departments/Edit/5
+        // GET: Ocorrencia/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace SalesWebMVC.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Department.FindAsync(id);
-            if (department == null)
+            var ocorrencia = await _context.Ocorrencia.FindAsync(id);
+            if (ocorrencia == null)
             {
                 return NotFound();
             }
-            return View(department);
+            return View(ocorrencia);
         }
 
-        // POST: Departments/Edit/5
+        // POST: Ocorrencia/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name, IDTransacao, DataCadastro")] Department department)
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Numeroocorrencia, Statusocorrencia")] Ocorrencia ocorrencia)
         {
-            if (id != department.Id)
+            if (id != ocorrencia.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace SalesWebMVC.Controllers
             {
                 try
                 {
-                    _context.Update(department);
+                    _context.Update(ocorrencia);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DepartmentExists(department.Id))
+                    if (!OcorrenciaExists(ocorrencia.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace SalesWebMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(department);
+            return View(ocorrencia);
         }
 
-        // GET: Departments/Delete/5
+        // GET: Ocorrencia/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace SalesWebMVC.Controllers
                 return NotFound();
             }
 
-            var department = await _context.Department
+            var ocorrencia = await _context.Ocorrencia
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (department == null)
+            if (ocorrencia == null)
             {
                 return NotFound();
             }
 
-            return View(department);
+            return View(ocorrencia);
         }
 
-        // POST: Departments/Delete/5
+        // POST: Ocorrencia/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var department = await _context.Department.FindAsync(id);
-            _context.Department.Remove(department);
+            var ocorrencia = await _context.Ocorrencia.FindAsync(id);
+            _context.Ocorrencia.Remove(ocorrencia);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DepartmentExists(int id)
+        private bool OcorrenciaExists(int id)
         {
-            return _context.Department.Any(e => e.Id == id);
+            return _context.Ocorrencia.Any(e => e.Id == id);
         }
     }
 }
